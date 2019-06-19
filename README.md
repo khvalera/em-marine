@@ -1,1 +1,1 @@
-# em-marine
+EM-marine reader software with Ethernet interface (TCP / IP)

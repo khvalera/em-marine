@@ -62,7 +62,7 @@ end;
 //===========================================
 procedure TForm_info.FormCreate(Sender: TObject);
 begin
-   Label_Version.Caption:= ReadVersion();
+   Label_Version.Caption:= 'Version: ' + ReadVersion();
 end;
 
 end.

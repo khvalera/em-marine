@@ -1,0 +1,97 @@
+object Form_Options: TForm_Options
+  Left = 445
+  Height = 117
+  Top = 120
+  Width = 266
+  BorderStyle = bsSingle
+  Caption = 'Options'
+  ClientHeight = 117
+  ClientWidth = 266
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  Position = poDesktopCenter
+  LCLVersion = '2.0.2.0'
+  object Panel_Buttons: TPanel
+    Left = 0
+    Height = 40
+    Top = 77
+    Width = 266
+    Align = alBottom
+    ClientHeight = 40
+    ClientWidth = 266
+    TabOrder = 0
+    object BitBtn_Seve: TBitBtn
+      Left = 88
+      Height = 30
+      Top = 5
+      Width = 90
+      Caption = 'Seve'
+      OnClick = BitBtn_SeveClick
+      TabOrder = 0
+    end
+  end
+  object Label1: TLabel
+    Left = 8
+    Height = 14
+    Top = 23
+    Width = 65
+    Caption = 'Ip address:'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 8
+    Height = 14
+    Top = 55
+    Width = 28
+    Caption = 'Port:'
+    ParentColor = False
+  end
+  object Edit_IP: TEdit
+    Left = 80
+    Height = 32
+    Top = 8
+    Width = 176
+    AutoSize = False
+    TabOrder = 1
+    Text = 'Edit_IP'
+  end
+  object SpinEdit_Port: TSpinEdit
+    Left = 80
+    Height = 32
+    Top = 40
+    Width = 74
+    AutoSize = False
+    MaxValue = 10000
+    TabOrder = 2
+  end
+  object TrayIcon: TTrayIcon
+    BalloonFlags = bfInfo
+    PopUpMenu = PopupMenu_Tray
+    left = 232
+    top = 80
+  end
+  object PopupMenu_Tray: TPopupMenu
+    top = 80
+    object MenuItem_Info: TMenuItem
+      Caption = 'Info'
+      OnClick = MenuItem_InfoClick
+    end
+    object MenuItem_Options: TMenuItem
+      Caption = 'Options'
+      OnClick = MenuItem_OptionsClick
+    end
+    object MenuItem2: TMenuItem
+      Caption = '-'
+    end
+    object MenuItem_Exit: TMenuItem
+      Caption = 'Exit'
+      OnClick = MenuItem_ExitClick
+    end
+  end
+  object Timer_Update: TTimer
+    Interval = 10
+    OnTimer = Timer_UpdateTimer
+    left = 32
+    top = 80
+  end
+end

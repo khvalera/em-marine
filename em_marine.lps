@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="19">
+      <Unit0>
+        <Filename Value="em_marine.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="51" Y="10"/>
+        <UsageCount Value="66"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="unit_main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form_Options"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <TopLine Value="26"/>
+        <CursorPos X="33" Y="133"/>
+        <UsageCount Value="66"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="unit_info.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form_info"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="3" Y="34"/>
+        <UsageCount Value="39"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="logini.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="LogINI"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="25"/>
+        <CursorPos X="14" Y="54"/>
+        <UsageCount Value="27"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="vinfo.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="20"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="/usr/lib/fpc/src/packages/rtl-extra/src/unix/sockets.pp"/>
+        <UnitName Value="Sockets"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2"/>
+        <UsageCount Value="19"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="/usr/lib/fpc/src/packages/rtl-extra/src/linux/unixsock.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="46"/>
+        <UsageCount Value="7"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="/usr/lib/fpc/src/packages/rtl-extra/src/wince/winsock.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="349"/>
+        <CursorPos X="25" Y="390"/>
+        <UsageCount Value="19"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="/usr/lib/fpc/src/packages/rtl-extra/src/inc/socketsh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="128"/>
+        <CursorPos X="3" Y="152"/>
+        <UsageCount Value="19"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="/usr/lib/lazarus/lcl/lclmessageglue.pas"/>
+        <UnitName Value="LCLMessageGlue"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="90"/>
+        <CursorPos Y="114"/>
+        <UsageCount Value="19"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="/usr/lib/fpc/src/packages/rtl-extra/src/wince/winsock2.pp"/>
+        <UnitName Value="WinSock2"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1139"/>
+        <CursorPos X="10" Y="1163"/>
+        <UsageCount Value="7"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="blcksock.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3251"/>
+        <CursorPos Y="3278"/>
+        <UsageCount Value="22"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="synsock.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="25"/>
+        <CursorPos X="18" Y="68"/>
+        <UsageCount Value="18"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="/usr/lib/lazarus/lcl/include/control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2889"/>
+        <CursorPos Y="2915"/>
+        <UsageCount Value="18"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="images_list.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="34"/>
+        <UsageCount Value="10"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="/usr/lib/fpc/src/rtl/objpas/sysutils/finah.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="10" Y="33"/>
+        <UsageCount Value="9"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="/usr/lib/lazarus/lcl/include/customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="914"/>
+        <CursorPos Y="940"/>
+        <UsageCount Value="9"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="/usr/lib/lazarus/components/mouseandkeyinput/mouseandkeyinput.pas"/>
+        <UnitName Value="MouseAndKeyInput"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="10"/>
+        <UsageCount Value="10"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="ver_info.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="23"/>
+        <UsageCount Value="20"/>
+      </Unit18>
+    </Units>
+    <JumpHistory Count="23" HistoryIndex="22">
+      <Position1>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="98" TopLine="70"/>
+      </Position1>
+      <Position2>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="99" TopLine="70"/>
+      </Position2>
+      <Position3>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="100" TopLine="70"/>
+      </Position3>
+      <Position4>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="134" TopLine="109"/>
+      </Position4>
+      <Position5>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="167" TopLine="153"/>
+      </Position5>
+      <Position6>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="98" TopLine="89"/>
+      </Position6>
+      <Position7>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="181" TopLine="155"/>
+      </Position7>
+      <Position8>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="182" TopLine="155"/>
+      </Position8>
+      <Position9>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="183" TopLine="155"/>
+      </Position9>
+      <Position10>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="181" TopLine="131"/>
+      </Position10>
+      <Position11>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="182" Column="34" TopLine="169"/>
+      </Position11>
+      <Position12>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="287" Column="73" TopLine="251"/>
+      </Position12>
+      <Position13>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="301" Column="83" TopLine="253"/>
+      </Position13>
+      <Position14>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="132" Column="79" TopLine="96"/>
+      </Position14>
+      <Position15>
+        <Filename Value="unit_main.pas"/>
+        <Caret Line="220" Column="24"/>
+      </Position15>
+      <Position16>
+        <Filename Value="unit_info.pas"/>
+        <Caret Line="9" Column="18"/>
+      </Position16>
+      <Position17>
+        <Filename Value="unit_info.pas"/>
+        <Caret Line="40" Column="10" TopLine="14"/>
+      </Position17>
+      <Position18>
+        <Filename Value="unit_info.pas"/>
+        <Caret Line="50" TopLine="17"/>
+      </Position18>
+      <Position19>
+        <Filename Value="unit_info.pas"/>
+        <Caret Line="50" TopLine="17"/>
+      </Position19>
+      <Position20>
+        <Filename Value="unit_info.pas"/>
+        <Caret Line="9" Column="21"/>
+      </Position20>
+      <Position21>
+        <Filename Value="unit_info.pas"/>
+        <Caret Line="34" Column="3"/>
+      </Position21>
+      <Position22>
+        <Filename Value="em_marine.lpr"/>
+        <Caret Line="20" Column="59"/>
+      </Position22>
+      <Position23>
+        <Filename Value="em_marine.lpr"/>
+        <Caret Line="10" Column="52"/>
+      </Position23>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+  <Debugging>
+    <Watches Count="1">
+      <Item1>
+        <Expression Value="Line"/>
+      </Item1>
+    </Watches>
+  </Debugging>
+</CONFIG>

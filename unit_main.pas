@@ -88,6 +88,8 @@ var
   ReadBuf: array of Byte;
   i, ReadCount: Integer;
   Str: String;
+  const ValLuck: array[0..13] of Byte = (30,5,0,0,0,0,1,0,0,0,1,1,0,0);
+
 begin
    Str:= '';
    Socket := TTCPBlockSocket.Create;
@@ -137,6 +139,9 @@ begin
            KeyInput.Press(Str);
            if PressEnter = 'Yes' then
               KeyInput.Press(VK_RETURN);
+           // пошлем в устройство что карточка прочитана
+           for i := 0 to Length(ValLuck) do
+              Socket.SendByte(ValLuck[i]);
            Str:= '';
            Break;
          end;

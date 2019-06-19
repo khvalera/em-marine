@@ -1,7 +1,7 @@
 object Form_info: TForm_info
-  Left = 443
+  Left = 452
   Height = 318
-  Top = 272
+  Top = 355
   Width = 214
   BorderStyle = bsSingle
   Caption = 'info'

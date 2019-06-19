@@ -1,11 +1,11 @@
 object Form_Options: TForm_Options
   Left = 445
-  Height = 117
+  Height = 161
   Top = 120
   Width = 266
   BorderStyle = bsSingle
   Caption = 'Options'
-  ClientHeight = 117
+  ClientHeight = 161
   ClientWidth = 266
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
@@ -14,7 +14,7 @@ object Form_Options: TForm_Options
   object Panel_Buttons: TPanel
     Left = 0
     Height = 40
-    Top = 77
+    Top = 121
     Width = 266
     Align = alBottom
     ClientHeight = 40
@@ -64,14 +64,23 @@ object Form_Options: TForm_Options
     MaxValue = 10000
     TabOrder = 2
   end
+  object CheckBox_PressEnter: TCheckBox
+    Left = 8
+    Height = 23
+    Top = 80
+    Width = 95
+    Caption = 'Press Enter'
+    TabOrder = 3
+  end
   object TrayIcon: TTrayIcon
     BalloonFlags = bfInfo
     PopUpMenu = PopupMenu_Tray
     left = 232
-    top = 80
+    top = 128
   end
   object PopupMenu_Tray: TPopupMenu
-    top = 80
+    left = 8
+    top = 128
     object MenuItem_Info: TMenuItem
       Caption = 'Info'
       OnClick = MenuItem_InfoClick
@@ -91,7 +100,7 @@ object Form_Options: TForm_Options
   object Timer_Update: TTimer
     Interval = 10
     OnTimer = Timer_UpdateTimer
-    left = 32
-    top = 80
+    left = 40
+    top = 128
   end
 end

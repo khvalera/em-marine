@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
   Spin, Buttons, PopupNotifier, MaskEdit, Menus, blcksock, LogINI, images_list,
-  LazFileUtils, MouseAndKeyInput;
+  LazFileUtils, MouseAndKeyInput, LCLType;
 
 type
 
@@ -26,6 +26,7 @@ type
 
   TForm_Options = class(TForm)
     BitBtn_Seve: TBitBtn;
+    CheckBox_PressEnter: TCheckBox;
     Edit_IP: TEdit;
     Label1: TLabel;
     Label2: TLabel;
@@ -60,7 +61,7 @@ var
   Socket: TTCPBlockSocket;
   buffer: String = '';
   FileINI, FileLog, PixmapsDirectory: String;
-  IP, Port, DeviceStatus: String;
+  IP, Port, PressEnter, DeviceStatus: String;
   CloseForm: Boolean;
 
 implementation
@@ -134,6 +135,8 @@ begin
            Str := StringReplace(Str, '3175', '', [rfReplaceAll, rfIgnoreCase]);
            // отправим значение
            KeyInput.Press(Str);
+           if PressEnter = 'Yes' then
+              KeyInput.Press(VK_RETURN);
            Str:= '';
            Break;
          end;
@@ -201,8 +204,9 @@ end;
 procedure ReadINIOptions();
 var LogDir, ApplNameExe, ExeName, FileName: String;
 begin
-  IP   := ReadINI('Options', 'IP',   '192.168.1.191',     FileINI);
-  Port := ReadINI('Options', 'Port', '9761', FileINI);
+  IP         := ReadINI('Options', 'IP',   '192.168.1.191',     FileINI);
+  Port       := ReadINI('Options', 'Port', '9761', FileINI);
+  PressEnter := ReadINI('Options', 'PressEnter', 'No', FileINI);
 
   ExeName         := ExtractFileExt(Application.ExeName);
   FileName        := ExtractFileName(Application.ExeName);
@@ -220,7 +224,14 @@ procedure TForm_Options.BitBtn_SeveClick(Sender: TObject);
 begin
   WriteINI('Options', 'IP',   Edit_IP.Text,       FileINI);
   WriteINI('Options', 'Port', SpinEdit_Port.Text, FileINI);
+  if CheckBox_PressEnter.Checked then
+     WriteINI('Options', 'PressEnter', 'Yes', FileINI)
+  else
+     WriteINI('Options', 'PressEnter', 'No', FileINI);
+
   ReadINIOptions();
+  // свернем форму
+  Close;
 end;
 
 //===========================================
@@ -255,7 +266,10 @@ begin
 
    Edit_IP.Text      := IP;
    SpinEdit_Port.Text:= Port;
-
+   if PressEnter = 'Yes' then
+      CheckBox_PressEnter.Checked:= True
+   else
+      CheckBox_PressEnter.Checked:= False;
    BitBtn_Seve.Images:= ImageList_menu;
    BitBtn_Seve.ImageIndex := ReturnIndexImageList(ImageStrList_menu, 'save.png');
    BitBtn_Seve.ImageWidth:= 16;

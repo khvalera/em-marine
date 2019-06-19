@@ -130,6 +130,8 @@ begin
              Str:= Str + IntToStr(Socket.RecvByte(250));
            end;
            Log('Data obtained from the reader "' + Str + '"' , FileLog, 0,0);
+           // убираем 31 75
+           Str := StringReplace(Str, '3175', '', [rfReplaceAll, rfIgnoreCase]);
            // отправим значение
            KeyInput.Press(Str);
            Str:= '';

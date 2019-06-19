@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Buttons,
-  ExtCtrls, fileinfo, winpeimagereader, elfreader, machoreader ;
+  ExtCtrls, fileinfo, winpeimagereader, elfreader, machoreader, LCLIntf;
 
 type
 
@@ -22,6 +22,7 @@ type
     Label_Email: TLabel;
     Panel_Buttons: TPanel;
     procedure FormCreate(Sender: TObject);
+    procedure Label_EmailClick(Sender: TObject);
   private
 
   public
@@ -63,6 +64,12 @@ end;
 procedure TForm_info.FormCreate(Sender: TObject);
 begin
    Label_Version.Caption:= 'Version: ' + ReadVersion();
+end;
+
+//===========================================
+procedure TForm_info.Label_EmailClick(Sender: TObject);
+begin
+  OpenURL('mailto:khvalera@ukr.net?subject=em_marine&body=Hello!');
 end;
 
 end.

@@ -19,7 +19,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="278"/>
+        <TopLine Value="202"/>
         <CursorPos X="14" Y="253"/>
         <UsageCount Value="75"/>
         <Loaded Value="True"/>
@@ -42,6 +42,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="LogINI"/>
         <EditorIndex Value="2"/>
+        <TopLine Value="3"/>
         <CursorPos X="14" Y="54"/>
         <UsageCount Value="36"/>
         <Loaded Value="True"/>

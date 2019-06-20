@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
   Spin, Buttons, PopupNotifier, MaskEdit, Menus, blcksock, LogINI, images_list,
-  LazFileUtils, MouseAndKeyInput, LCLType, DefaultTranslator;
+  LazFileUtils, MouseAndKeyInput, LCLType, DefaultTranslator, lazutf8, fileutil;
 
 type
 
@@ -242,12 +242,18 @@ end;
 //===========================================
 // при создании формы
 procedure TForm_Options.FormCreate(Sender: TObject);
+var HomeDir: String;
 begin
 
    // сворачиваем программу в трей
    Application.ShowMainForm := False;
    {$IFDEF UNIX}
-      FileINI := '/etc/em-marine/options.ini';
+      HomeDir:= GetEnvironmentVariableUTF8('HOME');
+      if not DirectoryExistsUTF8(HomeDir + '/.config/em-marine/') then
+         CreateDirUTF8(HomeDir + '/.config/em-marine/');
+      FileINI := HomeDir + '/.config/em-marine/options.ini';
+      if not FileExistsUTF8(FileINI) then
+         CopyFile('/etc//em-marine/options.ini', FileINI);
    {$ENDIF}
    {$IFDEF WINDOWS}
       FileINI := ExtractFilePath(Application.ExeName) + 'options.ini';
@@ -288,7 +294,7 @@ begin
    BitBtn_Save.ImageIndex := ReturnIndexImageList(ImageStrList_menu, 'save.png');
    BitBtn_Save.ImageWidth:= 16;
 
-   if not DirectoryExists(PixmapsDirectory) then
+   if not DirectoryExistsUTF8(PixmapsDirectory) then
    begin
      Log('Not found path "' + PixmapsDirectory + '"' , FileLog, 1, 1);
      Application.Free;

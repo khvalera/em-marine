@@ -246,8 +246,17 @@ begin
 
    // сворачиваем программу в трей
    Application.ShowMainForm := False;
-
-   FileINI := ExtractFilePath(Application.ExeName) + 'options.ini';
+   {$IFDEF UNIX}
+      FileINI := '/etc/em-marine/options.ini';
+   {$ENDIF}
+   {$IFDEF WINDOWS}
+      FileINI := ExtractFilePath(Application.ExeName) + 'options.ini';
+   {$ENDIF}
+   if not FileExists(FileINI) then
+   begin
+     Log('Not found file "' + FileINI + '"' , FileLog, 1, 1);
+     Application.Free;
+   end;
    ReadINIOptions();
 
    // добавим иконку программы

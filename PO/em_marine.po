@@ -1,0 +1,72 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tform_info.bitbtn_seve.caption
+msgid "Close"
+msgstr ""
+
+#: tform_info.caption
+msgid "info"
+msgstr ""
+
+#: tform_info.label1.caption
+msgid ""
+"EM-marine reader software with \n"
+"Ethernet interface (TCP / IP)\n"
+msgstr ""
+
+#: tform_info.label2.caption
+msgid "http://vkmodule.com.ua/"
+msgstr ""
+
+#: tform_info.label_developer.caption
+msgid "Developer: Khomenko V.V."
+msgstr ""
+
+#: tform_info.label_email.caption
+msgid "Email: khvalera@ukr.net"
+msgstr ""
+
+#: tform_info.label_version.caption
+msgid "Version:"
+msgstr ""
+
+#: tform_options.bitbtn_save.caption
+msgctxt "tform_options.bitbtn_save.caption"
+msgid "Save"
+msgstr ""
+
+#: tform_options.caption
+msgctxt "tform_options.caption"
+msgid "Options"
+msgstr ""
+
+#: tform_options.checkbox_pressenter.caption
+msgid "Press Enter"
+msgstr ""
+
+#: tform_options.edit_ip.text
+msgid "Edit_IP"
+msgstr ""
+
+#: tform_options.label1.caption
+msgid "Ip address:"
+msgstr ""
+
+#: tform_options.label2.caption
+msgid "Port:"
+msgstr ""
+
+#: tform_options.menuitem_exit.caption
+msgid "Exit"
+msgstr ""
+
+#: tform_options.menuitem_info.caption
+msgid "Info"
+msgstr ""
+
+#: tform_options.menuitem_options.caption
+msgctxt "tform_options.menuitem_options.caption"
+msgid "Options"
+msgstr ""
+

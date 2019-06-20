@@ -1,12 +1,12 @@
 object Form_Options: TForm_Options
   Left = 445
-  Height = 161
+  Height = 162
   Top = 120
-  Width = 266
+  Width = 265
   BorderStyle = bsSingle
   Caption = 'Options'
-  ClientHeight = 161
-  ClientWidth = 266
+  ClientHeight = 162
+  ClientWidth = 265
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   Position = poDesktopCenter
@@ -14,19 +14,19 @@ object Form_Options: TForm_Options
   object Panel_Buttons: TPanel
     Left = 0
     Height = 40
-    Top = 121
-    Width = 266
+    Top = 122
+    Width = 265
     Align = alBottom
     ClientHeight = 40
-    ClientWidth = 266
+    ClientWidth = 265
     TabOrder = 0
-    object BitBtn_Seve: TBitBtn
+    object BitBtn_Save: TBitBtn
       Left = 88
       Height = 30
       Top = 5
       Width = 90
-      Caption = 'Seve'
-      OnClick = BitBtn_SeveClick
+      Caption = 'Save'
+      OnClick = BitBtn_SaveClick
       TabOrder = 0
     end
   end

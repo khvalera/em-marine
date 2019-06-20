@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
   Spin, Buttons, PopupNotifier, MaskEdit, Menus, blcksock, LogINI, images_list,
-  LazFileUtils, MouseAndKeyInput, LCLType;
+  LazFileUtils, MouseAndKeyInput, LCLType, DefaultTranslator;
 
 type
 
@@ -25,7 +25,7 @@ type
   { TForm_Options }
 
   TForm_Options = class(TForm)
-    BitBtn_Seve: TBitBtn;
+    BitBtn_Save: TBitBtn;
     CheckBox_PressEnter: TCheckBox;
     Edit_IP: TEdit;
     Label1: TLabel;
@@ -39,7 +39,7 @@ type
     SpinEdit_Port: TSpinEdit;
     Timer_Update: TTimer;
     TrayIcon: TTrayIcon;
-    procedure BitBtn_SeveClick(Sender: TObject);
+    procedure BitBtn_SaveClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
     procedure MenuItem_ExitClick(Sender: TObject);
@@ -225,7 +225,7 @@ end;
 
 //===========================================
 // запись параметров
-procedure TForm_Options.BitBtn_SeveClick(Sender: TObject);
+procedure TForm_Options.BitBtn_SaveClick(Sender: TObject);
 begin
   WriteINI('Options', 'IP',   Edit_IP.Text,       FileINI);
   WriteINI('Options', 'Port', SpinEdit_Port.Text, FileINI);
@@ -275,9 +275,16 @@ begin
       CheckBox_PressEnter.Checked:= True
    else
       CheckBox_PressEnter.Checked:= False;
-   BitBtn_Seve.Images:= ImageList_menu;
-   BitBtn_Seve.ImageIndex := ReturnIndexImageList(ImageStrList_menu, 'save.png');
-   BitBtn_Seve.ImageWidth:= 16;
+   BitBtn_Save.Images:= ImageList_menu;
+   BitBtn_Save.ImageIndex := ReturnIndexImageList(ImageStrList_menu, 'save.png');
+   BitBtn_Save.ImageWidth:= 16;
+
+   if not DirectoryExists(PixmapsDirectory) then
+   begin
+     Log('Not found path "' + PixmapsDirectory + '"' , FileLog, 1, 1);
+     Application.Free;
+   end;
+
    create_em_marine();
 end;
 

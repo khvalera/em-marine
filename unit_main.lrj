@@ -1,0 +1,11 @@
+{"version":1,"strings":[
+{"hash":108725763,"name":"tform_options.caption","sourcebytes":[79,112,116,105,111,110,115],"value":"Options"},
+{"hash":366789,"name":"tform_options.bitbtn_save.caption","sourcebytes":[83,97,118,101],"value":"Save"},
+{"hash":183036954,"name":"tform_options.label1.caption","sourcebytes":[73,112,32,97,100,100,114,101,115,115,58],"value":"Ip address:"},
+{"hash":5728634,"name":"tform_options.label2.caption","sourcebytes":[80,111,114,116,58],"value":"Port:"},
+{"hash":196125600,"name":"tform_options.edit_ip.text","sourcebytes":[69,100,105,116,95,73,80],"value":"Edit_IP"},
+{"hash":85841506,"name":"tform_options.checkbox_pressenter.caption","sourcebytes":[80,114,101,115,115,32,69,110,116,101,114],"value":"Press Enter"},
+{"hash":328911,"name":"tform_options.menuitem_info.caption","sourcebytes":[73,110,102,111],"value":"Info"},
+{"hash":108725763,"name":"tform_options.menuitem_options.caption","sourcebytes":[79,112,116,105,111,110,115],"value":"Options"},
+{"hash":315140,"name":"tform_options.menuitem_exit.caption","sourcebytes":[69,120,105,116],"value":"Exit"}
+]}

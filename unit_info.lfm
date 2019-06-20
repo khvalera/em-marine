@@ -1,12 +1,12 @@
 object Form_info: TForm_info
   Left = 452
-  Height = 318
+  Height = 311
   Top = 355
-  Width = 214
+  Width = 218
   BorderStyle = bsSingle
   Caption = 'info'
-  ClientHeight = 318
-  ClientWidth = 214
+  ClientHeight = 311
+  ClientWidth = 218
   Icon.Data = {
     464B010000000100010087C6000001001800304B010016000000280000008700
     00008C0100000100180000000000903B01006400000064000000000000000000
@@ -2666,11 +2666,11 @@ object Form_info: TForm_info
   object Panel_Buttons: TPanel
     Left = 0
     Height = 40
-    Top = 278
-    Width = 214
+    Top = 271
+    Width = 218
     Align = alBottom
     ClientHeight = 40
-    ClientWidth = 214
+    ClientWidth = 218
     TabOrder = 0
     object BitBtn_Seve: TBitBtn
       Left = 64

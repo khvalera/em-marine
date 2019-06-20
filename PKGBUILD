@@ -1,5 +1,5 @@
 pkgname=em-marine
-pkgver=0.0.1.4
+pkgver=0.0.1.5
 pkgrel=1
 pkgdesc="Sound system events for the snuglinux distribution."
 arch=('any')
@@ -7,7 +7,7 @@ url="https://github.com/snuglinux/${pkgname}"
 license=('GPL2')
 makedepends=("lazarus" "git" "which")
 source=("https://github.com/khvalera/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('ec9c15378eedb5cb8d05c019e54d0623')
+md5sums=('f596364fc76ae6499670a1860b633e70')
 backup=( "etc/${pkgname}/options.ini" )
 
 package(){

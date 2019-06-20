@@ -208,6 +208,7 @@ end;
 //===============================================
 procedure ReadINIOptions();
 var LogDir, ApplNameExe, ExeName, FileName: String;
+    HomeDir: String;
 begin
   IP         := ReadINI('Options', 'IP',   '192.168.1.191',     FileINI);
   Port       := ReadINI('Options', 'Port', '9761', FileINI);
@@ -215,11 +216,23 @@ begin
 
   ExeName         := ExtractFileExt(Application.ExeName);
   FileName        := ExtractFileName(Application.ExeName);
-  ApplNameExe     := Copy(FileName, 1, Pos(ExeName, FileName) - 1);
+  {$IFDEF UNIX}
+     ApplNameExe := FileName;
+  {$ENDIF}
+  {$IFDEF WINDOWS}
+     ApplNameExe := Copy(FileName, 1, Pos(ExeName, FileName) - 1);
+  {$ENDIF}
   PixmapsDirectory:= ReadINI('Options', 'PixmapsDirectory', '/usr/share/pixmaps/' + ApplNameExe, FileINI);
-  LogDir          := ExtractFilePath(Application.ExeName) + 'Log/';
+  {$IFDEF UNIX}
+     HomeDir:= GetEnvironmentVariableUTF8('HOME');
+     LogDir := HomeDir + '/.local/share/' + ApplNameExe + '/';
+  {$ENDIF}
+  {$IFDEF WINDOWS}
+     LogDir  := ExtractFilePath(Application.ExeName) + 'Log/';
+  {$ENDIF}
   if not DirectoryExists(LogDir) then
      CreateDir(LogDir);
+
   FileLog := LogDir + FileName + '-' + DateToStr(Date) + '.log';
 end;
 
@@ -253,7 +266,7 @@ begin
          CreateDirUTF8(HomeDir + '/.config/em-marine/');
       FileINI := HomeDir + '/.config/em-marine/options.ini';
       if not FileExistsUTF8(FileINI) then
-         CopyFile('/etc//em-marine/options.ini', FileINI);
+         CopyFile('/etc/em-marine/options.ini', FileINI);
    {$ENDIF}
    {$IFDEF WINDOWS}
       FileINI := ExtractFilePath(Application.ExeName) + 'options.ini';

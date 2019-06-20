@@ -11,8 +11,8 @@ msgstr "Информация"
 
 #: tform_info.label1.caption
 msgid ""
-"Программное обеспечение считывателя карт\n"
-"EM-marine с интерфейсом Ethernet (TCP / IP)\n"
+"EM-marine reader software with \n"
+"Ethernet interface (TCP / IP)\n"
 msgstr ""
 
 #: tform_info.label2.caption

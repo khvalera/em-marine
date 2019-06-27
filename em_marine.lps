@@ -9,7 +9,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="5"/>
         <CursorPos X="12" Y="8"/>
-        <UsageCount Value="78"/>
+        <UsageCount Value="79"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -20,8 +20,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <TopLine Value="112"/>
-        <CursorPos Y="134"/>
-        <UsageCount Value="78"/>
+        <CursorPos X="35" Y="136"/>
+        <UsageCount Value="79"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -33,7 +33,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="4"/>
         <CursorPos X="91" Y="9"/>
-        <UsageCount Value="51"/>
+        <UsageCount Value="52"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -43,7 +43,7 @@
         <UnitName Value="LogINI"/>
         <EditorIndex Value="3"/>
         <CursorPos X="25" Y="39"/>
-        <UsageCount Value="39"/>
+        <UsageCount Value="40"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -58,7 +58,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="85"/>
         <CursorPos X="10" Y="110"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit5>
       <Unit6>
@@ -66,7 +66,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="167"/>
         <CursorPos X="17" Y="192"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit6>
     </Units>

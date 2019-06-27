@@ -190,7 +190,6 @@ end;
 
 //===============================================
 procedure TForm_Options.FormCloseQuery(Sender: TObject; var CanClose: boolean);
-var LastError: Integer;
 begin
   CanClose := CloseForm;
   if CloseForm = True then
@@ -282,11 +281,12 @@ begin
    // добавим иконку программы
    if FileExistsUTF8(PixmapsDirectory + 'tray/em-marine.png') then
       Application.Icon.Assign(LoadBitmapFromFile(PixmapsDirectory + 'tray/em-marine.png'));
-
+   { при использовании GetIcon есть утечка памяти
    // загрузим все иконки для Tray
    AddAllFileImageList(ImageList_Tray, ImageStrList_tray, PixmapsDirectory + 'tray', Width , Height);
    // выведем иконку в трей
    ImageList_Tray.GetIcon(ReturnIndexImageList(ImageStrList_tray, 'em-marine.png'), TrayIcon.Icon);
+   }
    TrayIcon.Visible:= True;
 
    // загрузим все иконки для меню
@@ -355,12 +355,36 @@ end;
 //===============================================
 // выполнение таймера
 procedure TForm_Options.Timer_UpdateTimer(Sender: TObject);
+var file_connect, file_not_connect: String;
 begin
+  file_connect    := PixmapsDirectory + 'tray/connect.ico';
+  file_not_connect:= PixmapsDirectory + 'tray/not_connect.ico';
+  TrayIcon.Icon.FreeImage;
+  if DeviceStatus = 'connect' then
+     if FileExistsUTF8(file_connect) = True then
+        TrayIcon.Icon.LoadFromFile( file_connect)
+     else
+        begin
+          Log('Not found file "' + file_connect + '"', FileLog, 1, 1);
+          CloseForm:= True;
+          Close;
+        end;
+  if DeviceStatus = 'not_connect' then
+     if FileExistsUTF8(file_not_connect) = True then
+        TrayIcon.Icon.LoadFromFile( file_not_connect)
+     else
+        begin
+           Log('Not found file "' + file_not_connect+ '"', FileLog, 1, 1);
+           CloseForm:= True;
+           Close;
+        end;
+
+  { при использовании GetIcon есть утечка памяти
   if DeviceStatus = 'not_connect' then
      ImageList_Tray.GetIcon(ReturnIndexImageList(ImageStrList_tray, 'no.png'), TrayIcon.Icon);
   if DeviceStatus = 'connect' then
-     ImageList_Tray.GetIcon(ReturnIndexImageList(ImageStrList_tray, 'em-marine.png'), TrayIcon.Icon);
-
+     ImageList_Tray.GetIcon(ReturnIndexImageList(ImageStrList_tray, 'em-marine.png'), Icon1);
+  }
 end;
 
 

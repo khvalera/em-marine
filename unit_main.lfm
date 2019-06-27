@@ -1,7 +1,7 @@
 object Form_Options: TForm_Options
-  Left = 443
+  Left = 442
   Height = 162
-  Top = 111
+  Top = 113
   Width = 265
   BorderStyle = bsSingle
   Caption = 'Options'

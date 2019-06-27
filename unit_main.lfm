@@ -1,7 +1,7 @@
 object Form_Options: TForm_Options
-  Left = 246
+  Left = 443
   Height = 162
-  Top = 133
+  Top = 111
   Width = 265
   BorderStyle = bsSingle
   Caption = 'Options'
@@ -32,17 +32,17 @@ object Form_Options: TForm_Options
   end
   object Label1: TLabel
     Left = 8
-    Height = 13
+    Height = 14
     Top = 23
-    Width = 55
+    Width = 65
     Caption = 'Ip address:'
     ParentColor = False
   end
   object Label2: TLabel
     Left = 8
-    Height = 13
+    Height = 14
     Top = 55
-    Width = 24
+    Width = 28
     Caption = 'Port:'
     ParentColor = False
   end
@@ -66,9 +66,9 @@ object Form_Options: TForm_Options
   end
   object CheckBox_PressEnter: TCheckBox
     Left = 8
-    Height = 17
+    Height = 23
     Top = 80
-    Width = 73
+    Width = 95
     Caption = 'Press Enter'
     TabOrder = 3
   end

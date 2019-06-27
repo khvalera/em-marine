@@ -7,7 +7,8 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
   Spin, Buttons, PopupNotifier, MaskEdit, Menus, blcksock, LogINI, images_list,
-  LazFileUtils, MouseAndKeyInput, LCLType, DefaultTranslator, lazutf8, fileutil;
+  LazFileUtils, MouseAndKeyInput, LCLType, DefaultTranslator, lazutf8, FileUtil,
+  strutils;
 
 type
 
@@ -87,11 +88,11 @@ procedure em_marine();
 var
   ReadBuf: array of Byte;
   i, ReadCount: Integer;
-  Str: String;
+  Str, Code: String;
   const ValLuck: array[0..13] of Byte = (30,5,0,0,0,0,1,0,0,0,1,1,0,0);
 
 begin
-   Str:= '';
+   Str:= ''; Code:= '';
    Socket := TTCPBlockSocket.Create;
    Socket.SetTimeout(200);
    Socket.Connect(IP, Port);
@@ -130,19 +131,19 @@ begin
            SetLength(ReadBuf, ReadCount);
            for i:= Low(ReadBuf) to High(ReadBuf) do
            begin
-             Str:= Str + IntToStr(Socket.RecvByte(250));
+              Str:= Str + IntToHex(Socket.RecvByte(250), 2);
            end;
-           Log('Data obtained from the reader "' + Str + '"' , FileLog, 0,0);
-           // убираем 31 75
-           Str := StringReplace(Str, '3175', '', [rfReplaceAll, rfIgnoreCase]);
+           Code:= IntToStr(Hex2Dec(Str));
+           Log('Data obtained from the reader "' + Code + '"' , FileLog, 0,0);
            // отправим значение
-           KeyInput.Press(Str);
+           KeyInput.Press(Code);
            if PressEnter = 'Yes' then
               KeyInput.Press(VK_RETURN);
            // пошлем в устройство что карточка прочитана
            for i := 0 to Length(ValLuck) do
               Socket.SendByte(ValLuck[i]);
-           Str:= '';
+           Str := '';
+           Code:= '';
            Break;
          end;
       end;

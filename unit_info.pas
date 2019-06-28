@@ -17,11 +17,16 @@ type
     Image1: TImage;
     Label1: TLabel;
     Label2: TLabel;
+    Label3: TLabel;
+    Label_Site_Device: TLabel;
+    Label_Github: TLabel;
     Label_Version: TLabel;
     Label_Developer: TLabel;
     Label_Email: TLabel;
     Panel_Buttons: TPanel;
     procedure FormCreate(Sender: TObject);
+    procedure Label2Click(Sender: TObject);
+    procedure Label_GithubClick(Sender: TObject);
     procedure Label_EmailClick(Sender: TObject);
   private
 
@@ -64,6 +69,18 @@ end;
 procedure TForm_info.FormCreate(Sender: TObject);
 begin
    Label_Version.Caption:= 'Version: ' + ReadVersion();
+end;
+
+//===========================================
+procedure TForm_info.Label2Click(Sender: TObject);
+begin
+  OpenURL('http://vkmodule.com.ua/Ethernet/Ethernet5.html');
+end;
+
+//===========================================
+procedure TForm_info.Label_GithubClick(Sender: TObject);
+begin
+   OpenURL('https://github.com/khvalera/em-marine');
 end;
 
 //===========================================

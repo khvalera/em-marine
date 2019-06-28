@@ -10,13 +10,15 @@ msgid "info"
 msgstr "Информация"
 
 #: tform_info.label1.caption
-msgid ""
-"EM-marine reader software with \n"
-"Ethernet interface (TCP / IP)\n"
+msgid "EM-marine reader software with"
 msgstr ""
 
 #: tform_info.label2.caption
-msgid "http://vkmodule.com.ua/"
+msgid "http://vkmodule.com.ua"
+msgstr ""
+
+#: tform_info.label3.caption
+msgid "Ethernet interface (TCP/IP)."
 msgstr ""
 
 #: tform_info.label_developer.caption
@@ -25,6 +27,15 @@ msgstr "Разработчик: Хоменко В.В."
 
 #: tform_info.label_email.caption
 msgid "Email: khvalera@ukr.net"
+msgstr ""
+
+#: tform_info.label_github.caption
+msgctxt "tform_info.label_github.caption"
+msgid "https://github.com/khvalera/em-marine"
+msgstr ""
+
+#: tform_info.label_site_device.caption
+msgid "Site with device: "
 msgstr ""
 
 #: tform_info.label_version.caption

@@ -18,6 +18,8 @@ type
   TThread_em_marine = class(TThread)
   private
     { Private declarations }
+    procedure SendKey;
+    procedure socket_em_marine;
   protected
     procedure Execute; override;
   end;
@@ -64,6 +66,7 @@ var
   FileINI, FileLog, PixmapsDirectory: String;
   IP, Port, PressEnter, DeviceStatus: String;
   CloseForm: Boolean;
+  Code: String;
 
 implementation
 
@@ -84,11 +87,23 @@ begin
 end;
 
 //===============================================
-procedure em_marine();
+// процедура отправки клавиш
+procedure TThread_em_marine.SendKey;
+begin
+  // код, который будет выполняться в потоке
+  if Thread_em_marine.Terminated then
+     Exit;
+  KeyInput.Press(Code);
+  if PressEnter = 'Yes' then
+     KeyInput.Press(VK_RETURN);
+end;
+
+//===============================================
+procedure TThread_em_marine.socket_em_marine();
 var
   ReadBuf: array of Byte;
   i, ReadCount: Integer;
-  Str, Code: String;
+  Str: String;
   const ValLuck: array[0..13] of Byte = (30,5,0,0,0,0,1,0,0,0,1,1,0,0);
 
 begin
@@ -133,12 +148,20 @@ begin
            begin
               Str:= Str + IntToHex(Socket.RecvByte(250), 2);
            end;
-           Code:= IntToStr(Hex2Dec(Str));
+           // удалим 1F и 4B
+           Str := StringReplace(Str, '1F4B', '', [rfReplaceAll, rfIgnoreCase]);
+           try
+              Code := IntToStr(Hex2Dec('00B65492'));
+           except
+             on EConvertError do
+               begin
+                 Log('Error Hex2Dec', FileLog, 1,1);
+                 Exit;
+               end;
+           end;
            Log('Data obtained from the reader "' + Code + '"' , FileLog, 0,0);
            // отправим значение
-           KeyInput.Press(Code);
-           if PressEnter = 'Yes' then
-              KeyInput.Press(VK_RETURN);
+           Synchronize(@SendKey);
            // пошлем в устройство что карточка прочитана
            for i := 0 to Length(ValLuck) do
               Socket.SendByte(ValLuck[i]);
@@ -181,7 +204,7 @@ begin
         if Thread_em_marine.Terminated then
            Break;
         // Получение данных
-        em_marine();
+        socket_em_marine();
         Sleep(1000);
      end;
 end;
@@ -359,7 +382,7 @@ var file_connect, file_not_connect: String;
 begin
   file_connect    := PixmapsDirectory + 'tray/connect.ico';
   file_not_connect:= PixmapsDirectory + 'tray/not_connect.ico';
-  TrayIcon.Icon.FreeImage;
+  //TrayIcon.Icon.FreeImage;
   if DeviceStatus = 'connect' then
      if FileExistsUTF8(file_connect) = True then
         TrayIcon.Icon.LoadFromFile( file_connect)

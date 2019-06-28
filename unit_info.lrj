@@ -1,9 +1,12 @@
 {"version":1,"strings":[
 {"hash":459983,"name":"tform_info.caption","sourcebytes":[105,110,102,111],"value":"info"},
 {"hash":4863637,"name":"tform_info.bitbtn_seve.caption","sourcebytes":[67,108,111,115,101],"value":"Close"},
-{"hash":35981097,"name":"tform_info.label1.caption","sourcebytes":[69,77,45,109,97,114,105,110,101,32,114,101,97,100,101,114,32,115,111,102,116,119,97,114,101,32,119,105,116,104,32,10,69,116,104,101,114,110,101,116,32,105,110,116,101,114,102,97,99,101,32,40,84,67,80,32,47,32,73,80,41],"value":"EM-marine reader software with \nEthernet interface (TCP / IP)"},
+{"hash":120892760,"name":"tform_info.label1.caption","sourcebytes":[69,77,45,109,97,114,105,110,101,32,114,101,97,100,101,114,32,115,111,102,116,119,97,114,101,32,119,105,116,104],"value":"EM-marine reader software with"},
 {"hash":52641630,"name":"tform_info.label_developer.caption","sourcebytes":[68,101,118,101,108,111,112,101,114,58,32,75,104,111,109,101,110,107,111,32,86,46,86,46],"value":"Developer: Khomenko V.V."},
 {"hash":59046276,"name":"tform_info.label_email.caption","sourcebytes":[69,109,97,105,108,58,32,107,104,118,97,108,101,114,97,64,117,107,114,46,110,101,116],"value":"Email: khvalera@ukr.net"},
-{"hash":40760943,"name":"tform_info.label2.caption","sourcebytes":[104,116,116,112,58,47,47,118,107,109,111,100,117,108,101,46,99,111,109,46,117,97,47],"value":"http://vkmodule.com.ua/"},
-{"hash":211419610,"name":"tform_info.label_version.caption","sourcebytes":[86,101,114,115,105,111,110,58],"value":"Version:"}
+{"hash":86433633,"name":"tform_info.label2.caption","sourcebytes":[104,116,116,112,58,47,47,118,107,109,111,100,117,108,101,46,99,111,109,46,117,97],"value":"http://vkmodule.com.ua"},
+{"hash":211419610,"name":"tform_info.label_version.caption","sourcebytes":[86,101,114,115,105,111,110,58],"value":"Version:"},
+{"hash":193858430,"name":"tform_info.label3.caption","sourcebytes":[69,116,104,101,114,110,101,116,32,105,110,116,101,114,102,97,99,101,32,40,84,67,80,47,73,80,41,46],"value":"Ethernet interface (TCP/IP)."},
+{"hash":90544400,"name":"tform_info.label_site_device.caption","sourcebytes":[83,105,116,101,32,119,105,116,104,32,100,101,118,105,99,101,58,32],"value":"Site with device: "},
+{"hash":235465829,"name":"tform_info.label_github.caption","sourcebytes":[104,116,116,112,115,58,47,47,103,105,116,104,117,98,46,99,111,109,47,107,104,118,97,108,101,114,97,47,101,109,45,109,97,114,105,110,101],"value":"https://github.com/khvalera/em-marine"}
 ]}

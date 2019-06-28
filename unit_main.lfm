@@ -32,24 +32,24 @@ object Form_Options: TForm_Options
   end
   object Label1: TLabel
     Left = 8
-    Height = 14
-    Top = 23
-    Width = 65
+    Height = 13
+    Top = 18
+    Width = 55
     Caption = 'Ip address:'
     ParentColor = False
   end
   object Label2: TLabel
     Left = 8
-    Height = 14
-    Top = 55
-    Width = 28
+    Height = 13
+    Top = 50
+    Width = 24
     Caption = 'Port:'
     ParentColor = False
   end
   object Edit_IP: TEdit
     Left = 80
-    Height = 32
-    Top = 8
+    Height = 22
+    Top = 12
     Width = 176
     AutoSize = False
     TabOrder = 1
@@ -57,8 +57,8 @@ object Form_Options: TForm_Options
   end
   object SpinEdit_Port: TSpinEdit
     Left = 80
-    Height = 32
-    Top = 40
+    Height = 22
+    Top = 44
     Width = 74
     AutoSize = False
     MaxValue = 10000
@@ -66,9 +66,9 @@ object Form_Options: TForm_Options
   end
   object CheckBox_PressEnter: TCheckBox
     Left = 8
-    Height = 23
+    Height = 17
     Top = 80
-    Width = 95
+    Width = 73
     Caption = 'Press Enter'
     TabOrder = 3
   end

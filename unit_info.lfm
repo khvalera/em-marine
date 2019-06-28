@@ -1,11 +1,11 @@
 object Form_info: TForm_info
-  Left = 452
-  Height = 311
-  Top = 355
+  Left = 385
+  Height = 321
+  Top = 340
   Width = 218
   BorderStyle = bsSingle
   Caption = 'info'
-  ClientHeight = 311
+  ClientHeight = 321
   ClientWidth = 218
   Icon.Data = {
     464B010000000100010087C6000001001800304B010016000000280000008700
@@ -2666,7 +2666,7 @@ object Form_info: TForm_info
   object Panel_Buttons: TPanel
     Left = 0
     Height = 40
-    Top = 271
+    Top = 281
     Width = 218
     Align = alBottom
     ClientHeight = 40
@@ -2683,17 +2683,17 @@ object Form_info: TForm_info
     end
   end
   object Label1: TLabel
-    Left = 16
-    Height = 28
+    Left = 8
+    Height = 13
     Top = 8
-    Width = 189
-    Caption = 'EM-marine reader software with '#10'Ethernet interface (TCP / IP)'
+    Width = 154
+    Caption = 'EM-marine reader software with'
     ParentColor = False
   end
   object Image1: TImage
-    Left = 56
+    Left = 64
     Height = 144
-    Top = 64
+    Top = 72
     Width = 96
     Picture.Data = {
       1754506F727461626C654E6574776F726B477261706869633967000089504E47
@@ -3527,19 +3527,19 @@ object Form_info: TForm_info
     Proportional = True
   end
   object Label_Developer: TLabel
-    Left = 24
-    Height = 14
+    Left = 48
+    Height = 13
     Top = 216
-    Width = 157
+    Width = 128
     Caption = 'Developer: Khomenko V.V.'
     ParentColor = False
   end
   object Label_Email: TLabel
     Cursor = crHandPoint
-    Left = 32
-    Height = 14
-    Top = 232
-    Width = 143
+    Left = 48
+    Height = 13
+    Top = 248
+    Width = 117
     Caption = 'Email: khvalera@ukr.net'
     Font.Color = clNavy
     Font.Style = [fsUnderline]
@@ -3548,19 +3548,53 @@ object Form_info: TForm_info
     OnClick = Label_EmailClick
   end
   object Label2: TLabel
-    Left = 24
-    Height = 14
+    Cursor = crHandPoint
+    Left = 96
+    Height = 13
     Top = 40
-    Width = 141
-    Caption = 'http://vkmodule.com.ua/'
+    Width = 116
+    Caption = 'http://vkmodule.com.ua'
+    Font.Color = clNavy
+    Font.Style = [fsUnderline]
     ParentColor = False
+    ParentFont = False
+    OnClick = Label2Click
   end
   object Label_Version: TLabel
-    Left = 48
-    Height = 14
-    Top = 256
-    Width = 47
+    Left = 56
+    Height = 13
+    Top = 264
+    Width = 39
     Caption = 'Version:'
     ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 8
+    Height = 13
+    Top = 24
+    Width = 136
+    Caption = 'Ethernet interface (TCP/IP).'
+    ParentColor = False
+  end
+  object Label_Site_Device: TLabel
+    Left = 8
+    Height = 13
+    Top = 40
+    Width = 82
+    Caption = 'Site with device: '
+    ParentColor = False
+  end
+  object Label_Github: TLabel
+    Cursor = crHandPoint
+    Left = 16
+    Height = 13
+    Top = 232
+    Width = 189
+    Caption = 'https://github.com/khvalera/em-marine'
+    Font.Color = clNavy
+    Font.Style = [fsUnderline]
+    ParentColor = False
+    ParentFont = False
+    OnClick = Label_GithubClick
   end
 end

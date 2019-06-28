@@ -10,7 +10,7 @@ msgid "info"
 msgstr ""
 
 #: tform_info.label1.caption
-msgid "EM-marine reader software with"
+msgid "EM-marine reader software with Ethernet"
 msgstr ""
 
 #: tform_info.label2.caption
@@ -18,7 +18,7 @@ msgid "http://vkmodule.com.ua"
 msgstr ""
 
 #: tform_info.label3.caption
-msgid "Ethernet interface (TCP/IP)."
+msgid "interface (TCP/IP)."
 msgstr ""
 
 #: tform_info.label_developer.caption

@@ -1,13 +1,13 @@
 pkgname=em-marine
-pkgver=0.0.1.5
+pkgver=0.0.1.9
 pkgrel=1
-pkgdesc="Sound system events for the snuglinux distribution."
+pkgdesc="EM-marine reader software with Ethernet interface (TCP / IP)"
 arch=('any')
-url="https://github.com/snuglinux/${pkgname}"
+url="https://github.com/khvalera/${pkgname}"
 license=('GPL2')
 makedepends=("lazarus" "git" "which")
 source=("https://github.com/khvalera/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('f596364fc76ae6499670a1860b633e70')
+md5sums=('88d55ca32137084f6a0a9836182c4e07')
 backup=( "etc/${pkgname}/options.ini" )
 
 package(){

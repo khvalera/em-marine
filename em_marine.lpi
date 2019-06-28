@@ -11,7 +11,6 @@
       <XPManifest>
         <DpiAware Value="True"/>
       </XPManifest>
-      <Icon Value="0"/>
     </General>
     <i18n>
       <EnableI18N Value="True"/>
@@ -84,9 +83,6 @@
       </Optimizations>
     </CodeGeneration>
     <Linking>
-      <Debugging>
-        <GenerateDebugInfo Value="False"/>
-      </Debugging>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>

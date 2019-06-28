@@ -280,10 +280,11 @@ end;
 procedure TForm_Options.FormCreate(Sender: TObject);
 var HomeDir: String;
 begin
-
    // сворачиваем программу в трей
    Application.ShowMainForm := False;
    {$IFDEF UNIX}
+      Edit_IP.Height:= 28;
+      SpinEdit_Port.Height:= 31;
       HomeDir:= GetEnvironmentVariableUTF8('HOME');
       if not DirectoryExistsUTF8(HomeDir + '/.config/em-marine/') then
          CreateDirUTF8(HomeDir + '/.config/em-marine/');
@@ -292,6 +293,8 @@ begin
          CopyFile('/etc/em-marine/options.ini', FileINI);
    {$ENDIF}
    {$IFDEF WINDOWS}
+      Edit_IP.Height:= 22;
+      SpinEdit_Port.Height:= 22;
       FileINI := ExtractFilePath(Application.ExeName) + 'options.ini';
    {$ENDIF}
    if not FileExists(FileINI) then
@@ -302,8 +305,8 @@ begin
    ReadINIOptions();
 
    // добавим иконку программы
-   if FileExistsUTF8(PixmapsDirectory + 'tray/em-marine.png') then
-      Application.Icon.Assign(LoadBitmapFromFile(PixmapsDirectory + 'tray/em-marine.png'));
+   if FileExistsUTF8(PixmapsDirectory + 'tray/connect.ico') then
+      Application.Icon.Assign(LoadBitmapFromFile(PixmapsDirectory + 'tray/connect.ico'));
    { при использовании GetIcon есть утечка памяти
    // загрузим все иконки для Tray
    AddAllFileImageList(ImageList_Tray, ImageStrList_tray, PixmapsDirectory + 'tray', Width , Height);

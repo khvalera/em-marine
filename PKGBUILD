@@ -1,6 +1,6 @@
 pkgname=em-marine
 pkgver=0.0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="EM-marine reader software with Ethernet interface (TCP / IP)"
 arch=('any')
 url="https://github.com/khvalera/${pkgname}"

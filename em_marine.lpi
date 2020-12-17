@@ -11,6 +11,7 @@
       <XPManifest>
         <DpiAware Value="True"/>
       </XPManifest>
+      <Icon Value="0"/>
     </General>
     <i18n>
       <EnableI18N Value="True"/>
@@ -70,7 +71,7 @@
   <CompilerOptions>
     <Version Value="11"/>
     <Target>
-      <Filename Value="em_marine"/>
+      <Filename Value="em-marine"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>

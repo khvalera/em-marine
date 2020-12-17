@@ -970,7 +970,7 @@ object Form_Options: TForm_Options
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   Position = poDesktopCenter
-  LCLVersion = '2.0.2.0'
+  LCLVersion = '2.0.10.0'
   object Panel_Buttons: TPanel
     Left = 0
     Height = 40
@@ -992,17 +992,17 @@ object Form_Options: TForm_Options
   end
   object Label1: TLabel
     Left = 8
-    Height = 14
+    Height = 17
     Top = 18
-    Width = 65
+    Width = 72
     Caption = 'Ip address:'
     ParentColor = False
   end
   object Label2: TLabel
     Left = 8
-    Height = 14
+    Height = 17
     Top = 50
-    Width = 28
+    Width = 31
     Caption = 'Port:'
     ParentColor = False
   end
@@ -1028,19 +1028,19 @@ object Form_Options: TForm_Options
     Left = 8
     Height = 23
     Top = 80
-    Width = 95
+    Width = 100
     Caption = 'Press Enter'
     TabOrder = 3
   end
   object TrayIcon: TTrayIcon
     BalloonFlags = bfInfo
     PopUpMenu = PopupMenu_Tray
-    left = 232
-    top = 128
+    Left = 232
+    Top = 128
   end
   object PopupMenu_Tray: TPopupMenu
-    left = 8
-    top = 128
+    Left = 8
+    Top = 128
     object MenuItem_Info: TMenuItem
       Caption = 'Info'
       OnClick = MenuItem_InfoClick
@@ -1060,7 +1060,7 @@ object Form_Options: TForm_Options
   object Timer_Update: TTimer
     Interval = 10
     OnTimer = Timer_UpdateTimer
-    left = 40
-    top = 128
+    Left = 40
+    Top = 128
   end
 end

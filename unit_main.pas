@@ -151,7 +151,8 @@ begin
            // удалим 1F и 4B
            Str := StringReplace(Str, '1F4B', '', [rfReplaceAll, rfIgnoreCase]);
            try
-              Code := IntToStr(Hex2Dec('00B65492'));
+             //Code := IntToStr(Hex2Dec('00B65492'));
+             Code := IntToStr(Hex2Dec(Str));
            except
              on EConvertError do
                begin
@@ -164,7 +165,7 @@ begin
            Synchronize(@SendKey);
            // пошлем в устройство что карточка прочитана
            for i := 0 to Length(ValLuck) do
-              Socket.SendByte(ValLuck[i]);
+               Socket.SendByte(ValLuck[i]);
            Str := '';
            Code:= '';
            Break;
@@ -246,6 +247,11 @@ begin
      ApplNameExe := Copy(FileName, 1, Pos(ExeName, FileName) - 1);
   {$ENDIF}
   PixmapsDirectory:= ReadINI('Options', 'PixmapsDirectory', '/usr/share/pixmaps/' + ApplNameExe, FileINI);
+  if not DirectoryExistsUTF8(PixmapsDirectory) then
+  begin
+    Log('Directory not found ' + PixmapsDirectory, FileLog, 1, 1);
+    Halt;
+  end;
   {$IFDEF UNIX}
      HomeDir:= GetEnvironmentVariableUTF8('HOME');
      LogDir := HomeDir + '/.local/share/' + ApplNameExe + '/';
@@ -253,7 +259,7 @@ begin
   {$IFDEF WINDOWS}
      LogDir  := ExtractFilePath(Application.ExeName) + 'Log/';
   {$ENDIF}
-  if not DirectoryExists(LogDir) then
+  if not DirectoryExistsUTF8(LogDir) then
      CreateDir(LogDir);
 
   FileLog := LogDir + FileName + '-' + DateToStr(Date) + '.log';
@@ -300,10 +306,9 @@ begin
    if not FileExists(FileINI) then
    begin
      Log('Not found file "' + FileINI + '"' , FileLog, 1, 1);
-     Application.Free;
+     Halt;
    end;
    ReadINIOptions();
-
    // добавим иконку программы
    if FileExistsUTF8(PixmapsDirectory + 'tray/connect.ico') then
       Application.Icon.Assign(LoadBitmapFromFile(PixmapsDirectory + 'tray/connect.ico'));
@@ -330,15 +335,10 @@ begin
       CheckBox_PressEnter.Checked:= True
    else
       CheckBox_PressEnter.Checked:= False;
+
    BitBtn_Save.Images:= ImageList_menu;
    BitBtn_Save.ImageIndex := ReturnIndexImageList(ImageStrList_menu, 'save.png');
    BitBtn_Save.ImageWidth:= 16;
-
-   if not DirectoryExistsUTF8(PixmapsDirectory) then
-   begin
-     Log('Not found path "' + PixmapsDirectory + '"' , FileLog, 1, 1);
-     Application.Free;
-   end;
 
    create_em_marine();
 end;
@@ -412,7 +412,6 @@ begin
      ImageList_Tray.GetIcon(ReturnIndexImageList(ImageStrList_tray, 'em-marine.png'), Icon1);
   }
 end;
-
 
 end.
 

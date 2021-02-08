@@ -3,13 +3,13 @@
   <ProjectSession>
     <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="17">
+    <Units Count="21">
       <Unit0>
         <Filename Value="em_marine.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="12" Y="8"/>
-        <UsageCount Value="100"/>
+        <CursorPos X="102" Y="22"/>
+        <UsageCount Value="106"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -18,10 +18,8 @@
         <ComponentName Value="Form_Options"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="182"/>
-        <CursorPos Y="182"/>
-        <UsageCount Value="100"/>
+        <CursorPos X="10" Y="309"/>
+        <UsageCount Value="106"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -31,10 +29,11 @@
         <ComponentName Value="Form_info"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="51"/>
+        <TopLine Value="9"/>
         <CursorPos X="21" Y="9"/>
-        <UsageCount Value="73"/>
+        <UsageCount Value="79"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -43,13 +42,13 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="LogINI"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="35"/>
+        <TopLine Value="49"/>
         <CursorPos X="14" Y="12"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="67"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
-        <Filename Value="D:/Prorgamm/lazarus/lcl/interfaces/win32/win32object.inc"/>
+        <Filename Value="../Prorgamm/lazarus/lcl/interfaces/win32/win32object.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="399"/>
         <CursorPos Y="413"/>
@@ -114,156 +113,177 @@
         <UsageCount Value="9"/>
       </Unit12>
       <Unit13>
-        <Filename Value="D:/Prorgamm/lazarus/fpc/3.0.4/source/rtl/objpas/sysutils/sysstrh.inc"/>
+        <Filename Value="../Prorgamm/lazarus/fpc/3.0.4/source/rtl/objpas/sysutils/sysstrh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="94"/>
         <CursorPos X="10" Y="108"/>
         <UsageCount Value="13"/>
       </Unit13>
       <Unit14>
-        <Filename Value="D:/Prorgamm/lazarus/fpc/3.0.4/source/packages/rtl-objpas/src/inc/strutils.pp"/>
+        <Filename Value="../Prorgamm/lazarus/fpc/3.0.4/source/packages/rtl-objpas/src/inc/strutils.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="178"/>
         <CursorPos X="17" Y="192"/>
         <UsageCount Value="13"/>
       </Unit14>
       <Unit15>
-        <Filename Value="D:/Prorgamm/lazarus/fpc/3.0.4/source/rtl/objpas/sysutils/sysutilh.inc"/>
+        <Filename Value="../Prorgamm/lazarus/fpc/3.0.4/source/rtl/objpas/sysutils/sysutilh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="93"/>
         <CursorPos X="4" Y="107"/>
         <UsageCount Value="12"/>
       </Unit15>
       <Unit16>
-        <Filename Value="D:/Prorgamm/lazarus/lcl/dialogs.pp"/>
+        <Filename Value="../Prorgamm/lazarus/lcl/dialogs.pp"/>
         <UnitName Value="Dialogs"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="28"/>
         <CursorPos X="3" Y="42"/>
         <UsageCount Value="12"/>
       </Unit16>
+      <Unit17>
+        <Filename Value="../Prorgamm/lazarus/lcl/include/imglist.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2643"/>
+        <CursorPos X="45" Y="2647"/>
+        <UsageCount Value="11"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="../Prorgamm/lazarus/lcl/include/customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="925"/>
+        <CursorPos Y="946"/>
+        <UsageCount Value="10"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="../Prorgamm/lazarus/lcl/include/application.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1388"/>
+        <CursorPos Y="1405"/>
+        <UsageCount Value="10"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="../Prorgamm/lazarus/lcl/forms.pp"/>
+        <UnitName Value="Forms"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1838"/>
+        <CursorPos X="3" Y="1852"/>
+        <UsageCount Value="10"/>
+      </Unit20>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
-        <Filename Value="unit_main.pas"/>
-        <Caret Line="259" TopLine="224"/>
+        <Filename Value="em_marine.lpr"/>
+        <Caret Line="20"/>
       </Position1>
       <Position2>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="260" TopLine="225"/>
+        <Caret Line="319" Column="72" TopLine="303"/>
       </Position2>
       <Position3>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="308" TopLine="288"/>
+        <Caret Line="316" TopLine="305"/>
       </Position3>
       <Position4>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="309" TopLine="288"/>
+        <Caret Line="253" TopLine="239"/>
       </Position4>
       <Position5>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="316" TopLine="288"/>
+        <Caret Line="254" TopLine="239"/>
       </Position5>
       <Position6>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="319" TopLine="288"/>
+        <Caret Line="267" TopLine="253"/>
       </Position6>
       <Position7>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="322" TopLine="288"/>
+        <Caret Line="313" TopLine="299"/>
       </Position7>
       <Position8>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="323" TopLine="289"/>
+        <Caret Line="315" TopLine="299"/>
       </Position8>
       <Position9>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="324" TopLine="290"/>
+        <Caret Line="316" Column="11" TopLine="299"/>
       </Position9>
       <Position10>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="325" TopLine="291"/>
+        <Caret Line="352" TopLine="338"/>
       </Position10>
       <Position11>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="327" TopLine="293"/>
+        <Caret Line="316" TopLine="305"/>
       </Position11>
       <Position12>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="328" TopLine="294"/>
+        <Caret Line="253" TopLine="239"/>
       </Position12>
       <Position13>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="329" TopLine="295"/>
+        <Caret Line="316" TopLine="302"/>
       </Position13>
       <Position14>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="332" TopLine="298"/>
+        <Caret Line="317" TopLine="302"/>
       </Position14>
       <Position15>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="333" TopLine="299"/>
+        <Caret Line="352" TopLine="338"/>
       </Position15>
       <Position16>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="334" TopLine="300"/>
+        <Caret Line="253" TopLine="239"/>
       </Position16>
       <Position17>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="335" TopLine="301"/>
+        <Caret Line="316" TopLine="299"/>
       </Position17>
       <Position18>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="337" TopLine="303"/>
+        <Caret Line="317" Column="9" TopLine="305"/>
       </Position18>
       <Position19>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="343" TopLine="309"/>
+        <Caret Line="354" TopLine="277"/>
       </Position19>
       <Position20>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="80" TopLine="58"/>
+        <Caret Line="59" Column="26" TopLine="35"/>
       </Position20>
       <Position21>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="81" TopLine="58"/>
+        <Caret Line="233" Column="25" TopLine="228"/>
       </Position21>
       <Position22>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="84" TopLine="58"/>
+        <Caret Line="279" Column="17" TopLine="255"/>
       </Position22>
       <Position23>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="198" TopLine="177"/>
+        <Caret Line="262" Column="29" TopLine="243"/>
       </Position23>
       <Position24>
-        <Filename Value="unit_main.pas"/>
-        <Caret Line="202" TopLine="177"/>
+        <Filename Value="em_marine.lpr"/>
+        <Caret Line="21"/>
       </Position24>
       <Position25>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="204" TopLine="177"/>
+        <Caret Line="235" Column="5" TopLine="221"/>
       </Position25>
       <Position26>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="207" TopLine="177"/>
+        <Caret Line="250" Column="25" TopLine="235"/>
       </Position26>
       <Position27>
-        <Filename Value="unit_main.pas"/>
-        <Caret Line="110" TopLine="89"/>
+        <Filename Value="em_marine.lpr"/>
+        <Caret Line="21"/>
       </Position27>
       <Position28>
         <Filename Value="unit_main.pas"/>
-        <Caret Line="308" TopLine="288"/>
+        <Caret Line="309" Column="10"/>
       </Position28>
-      <Position29>
-        <Filename Value="unit_main.pas"/>
-        <Caret Line="94" TopLine="58"/>
-      </Position29>
-      <Position30>
-        <Filename Value="unit_main.pas"/>
-        <Caret Line="198" TopLine="177"/>
-      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
@@ -271,15 +291,6 @@
     </RunParams>
   </ProjectSession>
   <Debugging>
-    <BreakPoints Count="1">
-      <Item1>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="unit_main.pas"/>
-        <Line Value="59"/>
-      </Item1>
-    </BreakPoints>
     <Watches Count="1">
       <Item1>
         <Expression Value="Str"/>

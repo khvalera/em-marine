@@ -67,6 +67,7 @@ var
   IP, Port, PressEnter, DeviceStatus: String;
   CloseForm: Boolean;
   Code: String;
+  LastDeviceStatus: String = '';
 
 implementation
 
@@ -87,6 +88,30 @@ begin
 end;
 
 //===============================================
+// Создать файл настроек по умолчанию
+procedure CreateDefaultINIOptions();
+begin
+   WriteINI('Options', 'IP', '192.168.1.191', FileINI);
+   WriteINI('Options', 'Port', '9761', FileINI);
+   WriteINI('Options', 'PressEnter', 'No', FileINI);
+end;
+
+//===============================================
+// Український інтерфейс
+procedure ApplyUkrainianInterface();
+begin
+   Form_Options.Caption := 'Налаштування';
+   Form_Options.Label1.Caption := 'IP-адреса:';
+   Form_Options.Label2.Caption := 'Порт:';
+   Form_Options.CheckBox_PressEnter.Caption := 'Натискати Enter';
+   Form_Options.BitBtn_Save.Caption := 'Зберегти';
+   Form_Options.MenuItem_Info.Caption := 'Про програму';
+   Form_Options.MenuItem_Options.Caption := 'Налаштування';
+   Form_Options.MenuItem_Exit.Caption := 'Вихід';
+   Form_Options.TrayIcon.Hint := 'Зчитувач EM-Marine';
+end;
+
+//===============================================
 // процедура отправки клавиш
 procedure TThread_em_marine.SendKey;
 begin
@@ -101,7 +126,6 @@ end;
 //===============================================
 procedure TThread_em_marine.socket_em_marine();
 var
-  ReadBuf: array of Byte;
   i, ReadCount: Integer;
   Str: String;
   const ValLuck: array[0..13] of Byte = (30,5,0,0,0,0,1,0,0,0,1,1,0,0);
@@ -109,76 +133,83 @@ var
 begin
    Str:= ''; Code:= '';
    Socket := TTCPBlockSocket.Create;
-   Socket.SetTimeout(200);
-   Socket.Connect(IP, Port);
-   // Was there an error?
-   if Socket.LastError <> 0 then
-   begin
-      if DeviceStatus <> 'not_connect' then
-         Log('Could not connect to server.', FileLog, 1, 0);
-      DeviceStatus:= 'not_connect';
-      Exit;
-   end else
-   if DeviceStatus <> 'connect' then
-      DeviceStatus:= 'connect';
-   while true do
-   begin
-      // поступила команда закрыть программу
-      if CloseForm = True then
-         begin
-           Socket.CloseSocket;
-           Log('Close socket.', FileLog, 0,0);
-           Break;
-         end;
-      while Socket.CanRead(10) do
+   try
+      Socket.SetTimeout(200);
+      Socket.Connect(IP, Port);
+      // Was there an error?
+      if Socket.LastError <> 0 then
+      begin
+         if DeviceStatus <> 'not_connect' then
+            Log('Не вдалося підключитися до зчитувача.', FileLog, 1, 0);
+         DeviceStatus:= 'not_connect';
+         Exit;
+      end else
+      if DeviceStatus <> 'connect' then
+         DeviceStatus:= 'connect';
+
+      while not Terminated do
       begin
          // поступила команда закрыть программу
          if CloseForm = True then
-            begin
-              Log('Close socket.', FileLog, 0,0);
-              Socket.CloseSocket;
-              Exit;
-            end;
-         //кол-во данных, доступных для чтения
-         ReadCount:= Socket.WaitingData;
-         if ReadCount > 0 then
          begin
-           SetLength(ReadBuf, ReadCount);
-           for i:= Low(ReadBuf) to High(ReadBuf) do
-           begin
-              Str:= Str + IntToHex(Socket.RecvByte(250), 2);
-           end;
-           // удалим 1F и 4B
-           Str := StringReplace(Str, '1F4B', '', [rfReplaceAll, rfIgnoreCase]);
-           try
-             //Code := IntToStr(Hex2Dec('00B65492'));
-             Code := IntToStr(Hex2Dec(Str));
-           except
-             on EConvertError do
-               begin
-                 Log('Error Hex2Dec', FileLog, 1,1);
-                 Exit;
-               end;
-           end;
-           Log('Data obtained from the reader "' + Code + '"' , FileLog, 0,0);
-           // отправим значение
-           Synchronize(@SendKey);
-           // пошлем в устройство что карточка прочитана
-           for i := 0 to Length(ValLuck) do
-               Socket.SendByte(ValLuck[i]);
-           Str := '';
-           Code:= '';
+           Log('Сокет закрито.', FileLog, 0,0);
            Break;
          end;
+
+         if Socket.CanRead(500) then
+         begin
+            // поступила команда закрыть программу
+            if CloseForm = True then
+            begin
+              Log('Сокет закрито.', FileLog, 0,0);
+              Break;
+            end;
+
+            //кол-во данных, доступных для чтения
+            ReadCount:= Socket.WaitingData;
+            if ReadCount > 0 then
+            begin
+              Str := '';
+              for i:= 1 to ReadCount do
+              begin
+                 Str:= Str + IntToHex(Socket.RecvByte(250), 2);
+              end;
+              // удалим 1F и 4B
+              Str := StringReplace(Str, '1F4B', '', [rfReplaceAll, rfIgnoreCase]);
+              try
+                //Code := IntToStr(Hex2Dec('00B65492'));
+                Code := IntToStr(Hex2Dec(Str));
+              except
+                on EConvertError do
+                  begin
+                    Log('Помилка перетворення HEX-коду картки.', FileLog, 1,1);
+                    Exit;
+                  end;
+              end;
+              Log('Отримано код зі зчитувача: "' + Code + '"' , FileLog, 0,0);
+              // отправим значение
+              Synchronize(@SendKey);
+              // пошлем в устройство что карточка прочитана
+              for i := Low(ValLuck) to High(ValLuck) do
+                  Socket.SendByte(ValLuck[i]);
+              Str := '';
+              Code:= '';
+            end;
+         end;
       end;
+   finally
+      Socket.CloseSocket;
+      Socket.Free;
+      Socket := nil;
    end;
-   Socket.CloseSocket;
 end;
 
 //===============================================
 // остановим поток Thread_em_marine
 procedure terminate_thread_em_marine();
 begin
+  if Thread_em_marine = nil then
+     Exit;
   // Советуем потоку завершиться
   Thread_em_marine.Terminate;
   // Если поток заморожен, то он будет таким до ресета
@@ -189,6 +220,7 @@ begin
   Thread_em_marine.WaitFor;
   // Убиваем объект потока.
   Thread_em_marine.Free;
+  Thread_em_marine := nil;
 end;
 
 //===============================================
@@ -223,7 +255,10 @@ begin
     terminate_thread_em_marine();
     // тут оcтанавливаем
     if Socket <> nil then
+    begin
        Socket.Free;
+       Socket := nil;
+    end;
   end
   else
      MenuItem_OptionsClick(Sender);
@@ -231,38 +266,53 @@ end;
 
 //===============================================
 procedure ReadINIOptions();
-var LogDir, ApplNameExe, ExeName, FileName: String;
+var LogDir, ApplNameExe, ExeName, FileName, DefaultPixmapsDirectory, LocalPixmapsDirectory: String;
     HomeDir: String;
 begin
-  IP         := ReadINI('Options', 'IP',   '192.168.1.191',     FileINI);
-  Port       := ReadINI('Options', 'Port', '9761', FileINI);
-  PressEnter := ReadINI('Options', 'PressEnter', 'No', FileINI);
-
   ExeName         := ExtractFileExt(Application.ExeName);
   FileName        := ExtractFileName(Application.ExeName);
   {$IFDEF UNIX}
      ApplNameExe := FileName;
-  {$ENDIF}
-  {$IFDEF WINDOWS}
-     ApplNameExe := Copy(FileName, 1, Pos(ExeName, FileName) - 1);
-  {$ENDIF}
-  PixmapsDirectory:= ReadINI('Options', 'PixmapsDirectory', '/usr/share/pixmaps/' + ApplNameExe, FileINI);
-  if not DirectoryExistsUTF8(PixmapsDirectory) then
-  begin
-    Log('Directory not found ' + PixmapsDirectory, FileLog, 1, 1);
-    Halt;
-  end;
-  {$IFDEF UNIX}
      HomeDir:= GetEnvironmentVariableUTF8('HOME');
      LogDir := HomeDir + '/.local/share/' + ApplNameExe + '/';
   {$ENDIF}
   {$IFDEF WINDOWS}
+     ApplNameExe := Copy(FileName, 1, Pos(ExeName, FileName) - 1);
      LogDir  := ExtractFilePath(Application.ExeName) + 'Log/';
   {$ENDIF}
   if not DirectoryExistsUTF8(LogDir) then
-     CreateDir(LogDir);
+     CreateDirUTF8(LogDir);
 
   FileLog := LogDir + FileName + '-' + DateToStr(Date) + '.log';
+
+  IP         := ReadINI('Options', 'IP',   '192.168.1.191',     FileINI);
+  Port       := ReadINI('Options', 'Port', '9761', FileINI);
+  PressEnter := ReadINI('Options', 'PressEnter', 'No', FileINI);
+  if IP = '' then
+     IP := '192.168.1.191';
+  if Port = '' then
+     Port := '9761';
+  if PressEnter = '' then
+     PressEnter := 'No';
+
+  DefaultPixmapsDirectory := IncludeTrailingPathDelimiter('/usr/share/pixmaps/' + ApplNameExe);
+  LocalPixmapsDirectory   := IncludeTrailingPathDelimiter(ExtractFilePath(Application.ExeName) + 'images');
+  PixmapsDirectory        := ReadINI('Options', 'PixmapsDirectory', DefaultPixmapsDirectory, FileINI);
+  if PixmapsDirectory = '' then
+     PixmapsDirectory := DefaultPixmapsDirectory;
+  PixmapsDirectory        := IncludeTrailingPathDelimiter(PixmapsDirectory);
+
+  // Якщо стандартного каталогу з іконками немає, беремо images біля програми.
+  if not DirectoryExistsUTF8(PixmapsDirectory) then
+  begin
+    if DirectoryExistsUTF8(LocalPixmapsDirectory) then
+       PixmapsDirectory := LocalPixmapsDirectory
+    else
+    begin
+      Log('Каталог із зображеннями не знайдено: ' + PixmapsDirectory + ' або ' + LocalPixmapsDirectory, FileLog, 1, 1);
+      Halt;
+    end;
+  end;
 end;
 
 //===========================================
@@ -288,6 +338,7 @@ var HomeDir: String;
 begin
    // сворачиваем программу в трей
    Application.ShowMainForm := False;
+   Timer_Update.Interval := 500;
    {$IFDEF UNIX}
       Edit_IP.Height:= 28;
       SpinEdit_Port.Height:= 31;
@@ -296,16 +347,23 @@ begin
          CreateDirUTF8(HomeDir + '/.config/em-marine/');
       FileINI := HomeDir + '/.config/em-marine/options.ini';
       if not FileExistsUTF8(FileINI) then
-         CopyFile('/etc/em-marine/options.ini', FileINI);
+      begin
+         if FileExistsUTF8('/etc/em-marine/options.ini') then
+            CopyFile('/etc/em-marine/options.ini', FileINI)
+         else
+            CreateDefaultINIOptions();
+      end;
    {$ENDIF}
    {$IFDEF WINDOWS}
       Edit_IP.Height:= 22;
       SpinEdit_Port.Height:= 22;
       FileINI := ExtractFilePath(Application.ExeName) + 'options.ini';
+      if not FileExistsUTF8(FileINI) then
+         CreateDefaultINIOptions();
    {$ENDIF}
-   if not FileExists(FileINI) then
+   if not FileExistsUTF8(FileINI) then
    begin
-     Log('Not found file "' + FileINI + '"' , FileLog, 1, 1);
+     MessageDlg('Файл налаштувань не знайдено: "' + FileINI + '"' , mtError, [mbOK], 0);
      Halt;
    end;
    ReadINIOptions();
@@ -340,6 +398,7 @@ begin
    BitBtn_Save.ImageIndex := ReturnIndexImageList(ImageStrList_menu, 'save.png');
    BitBtn_Save.ImageWidth:= 16;
 
+   ApplyUkrainianInterface();
    create_em_marine();
 end;
 
@@ -383,6 +442,14 @@ end;
 procedure TForm_Options.Timer_UpdateTimer(Sender: TObject);
 var file_connect, file_not_connect: String;
 begin
+  if DeviceStatus = '' then
+     Exit;
+
+  // Не перечитываем иконку 100 раз в секунду. Меняем ее только при смене статуса.
+  if DeviceStatus = LastDeviceStatus then
+     Exit;
+  LastDeviceStatus := DeviceStatus;
+
   file_connect    := PixmapsDirectory + 'tray/connect.ico';
   file_not_connect:= PixmapsDirectory + 'tray/not_connect.ico';
   //TrayIcon.Icon.FreeImage;
@@ -391,7 +458,7 @@ begin
         TrayIcon.Icon.LoadFromFile( file_connect)
      else
         begin
-          Log('Not found file "' + file_connect + '"', FileLog, 1, 1);
+          Log('Файл іконки не знайдено: "' + file_connect + '"', FileLog, 1, 1);
           CloseForm:= True;
           Close;
         end;
@@ -400,7 +467,7 @@ begin
         TrayIcon.Icon.LoadFromFile( file_not_connect)
      else
         begin
-           Log('Not found file "' + file_not_connect+ '"', FileLog, 1, 1);
+           Log('Файл іконки не знайдено: "' + file_not_connect+ '"', FileLog, 1, 1);
            CloseForm:= True;
            Close;
         end;
@@ -414,4 +481,3 @@ begin
 end;
 
 end.
-

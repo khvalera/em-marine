@@ -1,0 +1,26 @@
+--- unit_info.lfm.orig
++++ unit_info.lfm
+@@
+-  Caption = 'info'
++  Caption = 'Про програму'
+@@
+-      Caption = 'Close'
++      Caption = 'Закрити'
+@@
+-    Caption = 'EM-marine reader software with Ethernet'
++    Caption = 'Програма для зчитувача EM-Marine з Ethernet'
+@@
+-    Caption = 'Developer: Khomenko V.V.'
++    Caption = 'Розробник: Хоменко В.В.'
+@@
+-    Caption = 'Email: khvalera@ukr.net'
++    Caption = 'Ел. пошта: khvalera@ukr.net'
+@@
+-    Caption = 'Version:'
++    Caption = 'Версія:'
+@@
+-    Caption = 'interface (TCP/IP).'
++    Caption = 'інтерфейсом (TCP/IP).'
+@@
+-    Caption = 'Site with device: '
++    Caption = 'Сайт пристрою: '

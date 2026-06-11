@@ -19,8 +19,11 @@
     </i18n>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
-      <AutoIncrementBuild Value="True"/>
+      <AutoIncrementBuild Value="False"/>
+      <MajorVersionNr Value="0"/>
+      <MinorVersionNr Value="0"/>
       <RevisionNr Value="3"/>
+      <BuildNr Value="1"/>
     </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>

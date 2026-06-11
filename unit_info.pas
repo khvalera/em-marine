@@ -68,7 +68,20 @@ end;
 //===========================================
 procedure TForm_info.FormCreate(Sender: TObject);
 begin
-   Label_Version.Caption:= 'Version: ' + ReadVersion();
+   Caption := 'Про програму';
+   Label_Version.Caption:= 'Версія: ' + ReadVersion();
+
+   // Переклад видимих написів без зміни логіки форми.
+   BitBtn_Seve.Caption := 'Закрити';
+   Label_Site_Device.Caption := StringReplace(Label_Site_Device.Caption, 'Site with device:', 'Сайт пристрою:', [rfIgnoreCase]);
+   Label_Site_Device.Caption := StringReplace(Label_Site_Device.Caption, 'site with device:', 'Сайт пристрою:', [rfIgnoreCase]);
+   Label_Developer.Caption := StringReplace(Label_Developer.Caption, 'Developer:', 'Розробник:', [rfIgnoreCase]);
+   Label_Email.Caption := StringReplace(Label_Email.Caption, 'Email:', 'Ел. пошта:', [rfIgnoreCase]);
+
+   // У деяких версіях форми цей напис розбитий на два Label у .lfm.
+   // Тому встановлюємо український текст примусово, незалежно від старого Caption.
+   Label1.Caption := 'Програма для зчитувача EM-Marine з Ethernet';
+   Label3.Caption := 'інтерфейсом (TCP/IP).';
 end;
 
 //===========================================
@@ -90,4 +103,3 @@ begin
 end;
 
 end.
-

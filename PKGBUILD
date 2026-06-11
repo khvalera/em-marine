@@ -1,5 +1,5 @@
 pkgname=em-marine
-pkgver=0.0.2.1
+pkgver=0.0.3.1
 pkgrel=1
 pkgdesc="EM-marine reader software with Ethernet interface (TCP / IP)"
 arch=('x86_64')

@@ -8,7 +8,7 @@ license=('GPL2')
 depends=('qt6-base' 'qt6pas')
 makedepends=('lazarus' 'fpc' 'gettext' 'which')
 source=("https://github.com/khvalera/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('e3005e050672852ff12144ef50e3f33f')
 backup=("etc/${pkgname}/options.ini")
 
 _lazarusdir() {

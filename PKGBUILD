@@ -1,44 +1,93 @@
 pkgname=em-marine
 pkgver=0.0.3.1
-pkgrel=1
-pkgdesc="EM-marine reader software with Ethernet interface (TCP / IP)"
+pkgrel=4
+pkgdesc="EM-marine reader software with Ethernet interface (TCP/IP)"
 arch=('x86_64')
 url="https://github.com/khvalera/${pkgname}"
 license=('GPL2')
-makedepends=("lazarus" "git" "which")
+makedepends=('lazarus' 'fpc' 'gettext' 'which')
 source=("https://github.com/khvalera/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('9bfd0e5258ae1a372e327db955248479')
-backup=( "etc/${pkgname}/options.ini" )
+md5sums=('25b813a9646ad560c4fc124c9ba1ac94')
+backup=("etc/${pkgname}/options.ini")
 
-package(){
-  cd "$srcdir/${pkgname}-${pkgver}"
+_lazarusdir() {
+  local d
 
-  export lazbuild=$(which lazbuild)
-  ${lazbuild} em_marine.lpi
+  for d in /usr/lib/lazarus /usr/share/lazarus /usr/lib64/lazarus; do
+    if [[ -d "${d}/lcl" ]]; then
+      printf '%s\n' "$d"
+      return 0
+    fi
+  done
 
-  # Create folders
-  mkdir -p ${pkgdir}/etc/${pkgname} \
-           ${pkgdir}/usr/bin \
-           ${pkgdir}/usr/share/pixmaps/${pkgname} \
-           ${pkgdir}/usr/share/applications \
-           ${pkgdir}/usr/share/doc/${pkgname} \
-           ${pkgdir}/usr/share/licenses/${pkgname} \
-           ${pkgdir}/usr/share/locale/en/LC_MESSAGES \
-           ${pkgdir}/usr/share/locale/ru/LC_MESSAGES \
-           ${pkgdir}/usr/share/locale/uk/LC_MESSAGES
-
-  # Copy files
-  install -m755 em-marine         "${pkgdir}/usr/bin/${pkgname}"
-  install -m644 README.md         "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -Dm 644 COPYING         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 options.ini     "${pkgdir}/etc/${pkgname}"
-  install -Dm 644 ${pkgname}.desktop "${pkgdir}/usr/share/applications"
-
-  msgfmt PO/em_marine.po \
-         -o ${pkgdir}/usr/share/locale/en/LC_MESSAGES/${pkgname}.mo
-  msgfmt PO/em_marine.ru.po \
-         -o ${pkgdir}/usr/share/locale/ru/LC_MESSAGES/${pkgname}.mo
-
-  cp -r images/* ${pkgdir}/usr/share/pixmaps/${pkgname}/
+  return 1
 }
 
+build() {
+  cd "$srcdir/${pkgname}-${pkgver}"
+
+  local lazarusdir
+  lazarusdir="$(_lazarusdir)" || {
+    echo "ERROR: Lazarus directory with lcl was not found."
+    echo "       Check that the lazarus package is installed correctly."
+    exit 1
+  }
+
+  mkdir -p "$srcdir/lazarus-config"
+
+  lazbuild \
+    --lazarusdir="$lazarusdir" \
+    --pcp="$srcdir/lazarus-config" \
+    em_marine.lpi
+}
+
+package() {
+  cd "$srcdir/${pkgname}-${pkgver}"
+
+  # Main program
+  install -Dm755 em-marine "${pkgdir}/usr/bin/${pkgname}"
+
+  # Configuration
+  install -Dm644 options.ini "${pkgdir}/etc/${pkgname}/options.ini"
+
+  # Desktop file
+  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  # Documentation
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  if [[ -f README_UKR.md ]]; then
+    install -Dm644 README_UKR.md "${pkgdir}/usr/share/doc/${pkgname}/README_UKR.md"
+  fi
+
+  # License
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Images
+  mkdir -p "${pkgdir}/usr/share/pixmaps/${pkgname}"
+  cp -a images/. "${pkgdir}/usr/share/pixmaps/${pkgname}/"
+
+  # Translations
+  mkdir -p \
+    "${pkgdir}/usr/share/locale/en/LC_MESSAGES" \
+    "${pkgdir}/usr/share/locale/ru/LC_MESSAGES" \
+    "${pkgdir}/usr/share/locale/uk/LC_MESSAGES"
+
+  if [[ -f PO/em_marine.po ]]; then
+    msgfmt PO/em_marine.po \
+      -o "${pkgdir}/usr/share/locale/en/LC_MESSAGES/${pkgname}.mo"
+  fi
+
+  if [[ -f PO/em_marine.ru.po ]]; then
+    msgfmt PO/em_marine.ru.po \
+      -o "${pkgdir}/usr/share/locale/ru/LC_MESSAGES/${pkgname}.mo"
+  fi
+
+  if [[ -f PO/em_marine.uk.po ]]; then
+    msgfmt PO/em_marine.uk.po \
+      -o "${pkgdir}/usr/share/locale/uk/LC_MESSAGES/${pkgname}.mo"
+  elif [[ -f PO/em_marine.uk_UA.po ]]; then
+    msgfmt PO/em_marine.uk_UA.po \
+      -o "${pkgdir}/usr/share/locale/uk/LC_MESSAGES/${pkgname}.mo"
+  fi
+}

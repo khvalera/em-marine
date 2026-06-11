@@ -1,6 +1,6 @@
 # EM-Marine Reader
 
-**Version:** 0.0.3.1
+**Version:** 0.0.3.2
 
 EM-Marine Reader is a small desktop utility for working with an EM-Marine card reader connected over Ethernet (TCP/IP).
 

@@ -1,13 +1,14 @@
 pkgname=em-marine
-pkgver=0.0.3.1
-pkgrel=4
+pkgver=0.0.3.2
+pkgrel=1
 pkgdesc="EM-marine reader software with Ethernet interface (TCP/IP)"
 arch=('x86_64')
 url="https://github.com/khvalera/${pkgname}"
 license=('GPL2')
+depends=('qt6-base' 'qt6pas')
 makedepends=('lazarus' 'fpc' 'gettext' 'which')
 source=("https://github.com/khvalera/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('25b813a9646ad560c4fc124c9ba1ac94')
+md5sums=('SKIP')
 backup=("etc/${pkgname}/options.ini")
 
 _lazarusdir() {
@@ -38,6 +39,7 @@ build() {
   lazbuild \
     --lazarusdir="$lazarusdir" \
     --pcp="$srcdir/lazarus-config" \
+    --ws=qt6 \
     em_marine.lpi
 }
 

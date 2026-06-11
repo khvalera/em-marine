@@ -6,7 +6,18 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Buttons,
-  ExtCtrls, fileinfo, winpeimagereader, elfreader, machoreader, LCLIntf, DefaultTranslator;
+  ExtCtrls, fileinfo,
+  {$IFDEF WINDOWS}
+  winpeimagereader,
+  {$ENDIF}
+  {$IFDEF UNIX}
+    {$IFDEF DARWIN}
+    machoreader,
+    {$ELSE}
+    elfreader,
+    {$ENDIF}
+  {$ENDIF}
+  LCLIntf, DefaultTranslator;
 
 type
 

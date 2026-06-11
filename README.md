@@ -129,3 +129,10 @@ Developer: **Khomenko V.V.**
 GitHub: <https://github.com/khvalera/em-marine>
 
 Email: <khvalera@ukr.net>
+
+## Version 0.0.3.2
+
+- Switched the Linux package build to the Qt6 LCL widgetset.
+- Added single-instance protection: a second copy of the application will not start while one instance is already running.
+- Added cross-platform single-instance implementation: Windows mutex and Unix lock file.
+- Added a simple Windows build script: `build-windows.bat`.

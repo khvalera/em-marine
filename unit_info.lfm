@@ -2,11 +2,11 @@ object Form_info: TForm_info
   Left = 529
   Height = 320
   Top = 263
-  Width = 277
+  Width = 296
   BorderStyle = bsSingle
   Caption = 'info'
   ClientHeight = 320
-  ClientWidth = 277
+  ClientWidth = 296
   Icon.Data = {
     AE77000000000100010062620000010018009877000016000000280000006200
     0000C40000000100180000000000507100006400000064000000000000000000
@@ -974,13 +974,13 @@ object Form_info: TForm_info
     Left = 0
     Height = 40
     Top = 280
-    Width = 277
+    Width = 296
     Align = alBottom
     ClientHeight = 40
-    ClientWidth = 277
+    ClientWidth = 296
     TabOrder = 0
     object BitBtn_Seve: TBitBtn
-      Left = 88
+      Left = 101
       Height = 30
       Top = 5
       Width = 90
@@ -998,7 +998,7 @@ object Form_info: TForm_info
     ParentColor = False
   end
   object Image1: TImage
-    Left = 88
+    Left = 93
     Height = 144
     Top = 64
     Width = 96
@@ -1834,16 +1834,17 @@ object Form_info: TForm_info
     Proportional = True
   end
   object Label_Developer: TLabel
-    Left = 60
+    Left = 64
     Height = 18
     Top = 216
     Width = 160
+    Alignment = taCenter
     Caption = 'Developer: Khomenko V.V.'
     ParentColor = False
   end
   object Label_Email: TLabel
     Cursor = crHandPoint
-    Left = 72
+    Left = 75
     Height = 18
     Top = 248
     Width = 146
@@ -1856,7 +1857,7 @@ object Form_info: TForm_info
   end
   object Label2: TLabel
     Cursor = crHandPoint
-    Left = 120
+    Left = 127
     Height = 18
     Top = 40
     Width = 148
@@ -1876,7 +1877,7 @@ object Form_info: TForm_info
     ParentColor = False
   end
   object Label3: TLabel
-    Left = 72
+    Left = 89
     Height = 18
     Top = 24
     Width = 109
@@ -1893,7 +1894,7 @@ object Form_info: TForm_info
   end
   object Label_Github: TLabel
     Cursor = crHandPoint
-    Left = 13
+    Left = 25
     Height = 18
     Top = 232
     Width = 244

@@ -129,3 +129,10 @@ TCP-порт, який використовує зчитувач.
 GitHub: <https://github.com/khvalera/em-marine>
 
 Ел. пошта: <khvalera@ukr.net>
+
+## Версія 0.0.3.2
+
+- Збірку Linux-пакета переведено на Qt6 LCL widgetset.
+- Додано захист від одночасного запуску двох копій програми.
+- Додано cross-platform механізм одного екземпляра: Windows mutex та Unix lock-файл.
+- Додано простий скрипт для збірки у Windows: `build-windows.bat`.
